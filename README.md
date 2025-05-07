@@ -2,7 +2,8 @@
 
 Backend setup:
 1. Create local database and add credentials and database url to application-private.properties
-2. Run the application
+2. Run "mvn -Dflyway.user=databaseUser -Dflyway.password=databasePassword -Dflyway.schemas=schemaName" to run flyway migrations
+3. Run the application
 
 Frontend:
 1. Run npm intall
