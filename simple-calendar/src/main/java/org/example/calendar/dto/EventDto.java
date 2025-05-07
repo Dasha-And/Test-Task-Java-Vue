@@ -1,46 +1,19 @@
-package org.example.calendar.model;
+package org.example.calendar.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Timestamp;
 
-@Entity(name = "events")
-public class Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
-    private Long id;
 
-    @Column(name = "title", nullable = false)
-    private String title;
+public class EventDto {
 
-    @Column(name = "description", nullable = true)
-    private String description;
-
-    @Column(name = "location", nullable = true)
-    private String location;
-
-    @Column(name = "start_date", nullable = false)
-    private Timestamp startDate;
-
-    @Column(name = "end_date", nullable = false)
-    private Timestamp endDate;
-
-    public Event() {
-    }
-
-    public Event(Long id, String title, String description, String location, Timestamp startDate, Timestamp endDate) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.location = location;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
+    Long id;
+    String title;
+    String description;
+    String location;
+    Timestamp startDate;
+    Timestamp endDate;
 
     public Long getId() {
         return id;
@@ -90,15 +63,30 @@ public class Event {
         this.endDate = endDate;
     }
 
+    @JsonCreator
+    public EventDto(@JsonProperty("id") Long id,
+                    @JsonProperty("title") String title,
+                    @JsonProperty("description") String description,
+                    @JsonProperty("location") String location,
+                    @JsonProperty("startDate") Timestamp startDate,
+                    @JsonProperty("endDate") Timestamp endDate) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     @Override
     public String toString() {
-        return "Event{" +
+        return "EventDto{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", location='" + location + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
-                ", location='" + location + '\'' +
                 '}';
     }
 }

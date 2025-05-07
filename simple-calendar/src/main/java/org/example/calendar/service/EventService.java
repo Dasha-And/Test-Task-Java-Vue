@@ -1,17 +1,17 @@
 package org.example.calendar.service;
 
-import org.example.calendar.model.Event;
+import org.example.calendar.dto.EventDto;
 
 import java.util.List;
 
 public interface EventService {
-    Event getEventById(Long id);
+    EventDto getEventById(Long id);
 
-    List<Event> getAllEvents();
+    List<EventDto> getAllEvents();
 
-    Event createEvent(Event event);
+    EventDto createEvent(EventDto event);
 
-    Event updateEvent(Long id, Event event);
+    EventDto updateEvent(EventDto event);
 
     void deleteEvent(Long id);
 }
